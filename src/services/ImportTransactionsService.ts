@@ -51,9 +51,7 @@ class ImportTransactionsService {
   async execute(filename: string): Promise<Transaction[]> {
     const csvFilePath = path.resolve(uploadConfig.directory, filename);
     const lines = await this.loadCSV(csvFilePath);
-    const results = await this.importTransactions(lines);
-    const transactions = await Promise.all(results);
-
+    const transactions = await this.importTransactions(lines);
     return transactions;
   }
 }
